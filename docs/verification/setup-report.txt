@@ -1,0 +1,29 @@
+Verification date: 2026-10-23
+Environment: Windows PowerShell, Python 3.14.7, Django 5.2.18
+
+Existing environment:
+  python manage.py check: no issues
+  python manage.py test: 9 tests passed
+  python manage.py migrate --noinput: all auth/contenttypes/sessions migrations passed
+  python manage.py collectstatic --noinput: successful
+
+Fresh environment:
+  python -m venv .venv-smoke
+  .venv-smoke/Scripts/python -m pip install -r requirements.txt: successful
+  New SQLite database: test-results/fresh.sqlite3 (ignored)
+  Migrations: all passed
+  Django system check: no issues
+  Django test-client GET /: HTTP 200
+  Separate fresh-environment runserver on port 8003, HTTP GET /: HTTP 200
+
+Dependencies installed in fresh environment:
+  Django 5.2.18
+  asgiref 3.13.0
+  sqlparse 0.6.0
+  tzdata 2026.5
+
+Expected HTTP 503 messages in the Django test output correspond to the explicit
+inquiry-failure and assistant-unavailable tests. They are not failed tests.
+
+Browser verification: see browser-report.json for actual captures/check groups.
+Visual acceptance is not claimed; see ../visual-review.md for remaining differences.

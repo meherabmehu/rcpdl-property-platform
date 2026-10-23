@@ -1,0 +1,796 @@
+{
+  "pages": [
+    {
+      "name": "home",
+      "route": "/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/home.png",
+      "reference": {
+        "source": "01-home.png",
+        "bounds": [
+          0,
+          34,
+          1024,
+          1536
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 48.1
+    },
+    {
+      "name": "projects",
+      "route": "/projects/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/projects.png",
+      "reference": {
+        "source": "02-projects.png",
+        "bounds": [
+          32,
+          53,
+          1153,
+          1002
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 50.95
+    },
+    {
+      "name": "project-01",
+      "route": "/projects/1/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/project-01.png",
+      "reference": {
+        "source": "03-project-01-details.png",
+        "bounds": [
+          40,
+          56,
+          1073,
+          1010
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 38.83
+    },
+    {
+      "name": "project-02",
+      "route": "/projects/2/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/project-02.png",
+      "reference": {
+        "source": "04-project-02-details.png",
+        "bounds": [
+          35,
+          76,
+          1177,
+          1024
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 31.11
+    },
+    {
+      "name": "gallery",
+      "route": "/gallery/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/gallery.png",
+      "reference": {
+        "source": "05-gallery.png",
+        "bounds": [
+          33,
+          81,
+          1117,
+          762
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 62.9
+    },
+    {
+      "name": "visit",
+      "route": "/virtual-site-visit/?mode=panorama",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/visit.png",
+      "reference": {
+        "source": "06-virtual-site-visit.png",
+        "bounds": [
+          23,
+          74,
+          869,
+          924
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 52.64
+    },
+    {
+      "name": "about",
+      "route": "/about/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/about.png",
+      "reference": {
+        "source": "08-about-contact.png",
+        "bounds": [
+          17,
+          56,
+          756,
+          739
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 53.79
+    },
+    {
+      "name": "contact",
+      "route": "/contact/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/contact.png",
+      "reference": {
+        "source": "08-about-contact.png",
+        "bounds": [
+          781,
+          56,
+          1520,
+          739
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 61.61
+    },
+    {
+      "name": "privacy",
+      "route": "/privacy/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/privacy.png",
+      "reference": {
+        "source": "09-privacy-terms.png",
+        "bounds": [
+          17,
+          93,
+          587,
+          1017
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 33.09
+    },
+    {
+      "name": "terms",
+      "route": "/terms/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/terms.png",
+      "reference": {
+        "source": "09-privacy-terms.png",
+        "bounds": [
+          607,
+          93,
+          1117,
+          1017
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 40.8
+    },
+    {
+      "name": "inquiry",
+      "route": "/inquiry/?project=1",
+      "viewport": [
+        460,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/inquiry.png",
+      "reference": {
+        "source": "07-assistant-inquiry.png",
+        "bounds": [
+          895,
+          83,
+          1320,
+          780
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 27.27
+    },
+    {
+      "name": "assistant",
+      "route": "/assistant/",
+      "viewport": [
+        460,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/assistant.png",
+      "reference": {
+        "source": "07-assistant-inquiry.png",
+        "bounds": [
+          455,
+          83,
+          879,
+          780
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 25.89
+    },
+    {
+      "name": "home-mobile",
+      "route": "/",
+      "viewport": [
+        390,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/home-mobile.png",
+      "reference": {
+        "source": "13-mobile-bangla.png",
+        "bounds": [
+          42,
+          72,
+          389,
+          949
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 50.49
+    },
+    {
+      "name": "projects-mobile",
+      "route": "/projects/",
+      "viewport": [
+        375,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/projects-mobile.png",
+      "reference": {
+        "source": "02-projects.png",
+        "bounds": [
+          1189,
+          53,
+          1504,
+          1002
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 34.93
+    },
+    {
+      "name": "project-01-mobile",
+      "route": "/projects/1/",
+      "viewport": [
+        390,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/project-01-mobile.png",
+      "reference": {
+        "source": "03-project-01-details.png",
+        "bounds": [
+          1125,
+          56,
+          1497,
+          1010
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 75.81
+    },
+    {
+      "name": "project-02-mobile",
+      "route": "/projects/2/",
+      "viewport": [
+        375,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/project-02-mobile.png",
+      "reference": {
+        "source": "04-project-02-details.png",
+        "bounds": [
+          1200,
+          77,
+          1507,
+          1024
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 61.49
+    },
+    {
+      "name": "gallery-mobile",
+      "route": "/gallery/",
+      "viewport": [
+        390,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/gallery-mobile.png",
+      "reference": {
+        "source": "05-gallery.png",
+        "bounds": [
+          1150,
+          81,
+          1503,
+          775
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 65.5
+    },
+    {
+      "name": "visit-video-mobile",
+      "route": "/virtual-site-visit/?mode=video",
+      "viewport": [
+        390,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/visit-video-mobile.png",
+      "reference": {
+        "source": "06-virtual-site-visit.png",
+        "bounds": [
+          902,
+          74,
+          1193,
+          913
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 44.67
+    },
+    {
+      "name": "visit-panorama-mobile",
+      "route": "/virtual-site-visit/?mode=panorama",
+      "viewport": [
+        390,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/visit-panorama-mobile.png",
+      "reference": {
+        "source": "06-virtual-site-visit.png",
+        "bounds": [
+          1222,
+          74,
+          1513,
+          913
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 34.3
+    },
+    {
+      "name": "about-mobile",
+      "route": "/about/",
+      "viewport": [
+        375,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/about-mobile.png",
+      "reference": {
+        "source": "08-about-contact.png",
+        "bounds": [
+          96,
+          752,
+          367,
+          997
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 65.09
+    },
+    {
+      "name": "contact-mobile",
+      "route": "/contact/",
+      "viewport": [
+        375,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/contact-mobile.png",
+      "reference": {
+        "source": "08-about-contact.png",
+        "bounds": [
+          860,
+          752,
+          1131,
+          997
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 60.68
+    },
+    {
+      "name": "privacy-mobile",
+      "route": "/privacy/",
+      "viewport": [
+        375,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/privacy-mobile.png",
+      "reference": {
+        "source": "09-privacy-terms.png",
+        "bounds": [
+          1135,
+          93,
+          1318,
+          1017
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 44.72
+    },
+    {
+      "name": "terms-mobile",
+      "route": "/terms/",
+      "viewport": [
+        375,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/terms-mobile.png",
+      "reference": {
+        "source": "09-privacy-terms.png",
+        "bounds": [
+          1335,
+          93,
+          1519,
+          1017
+        ]
+      },
+      "mean_absolute_pixel_difference_0_255": 44.88
+    },
+    {
+      "name": "language-switch",
+      "route": "/projects/2/?mode=panorama",
+      "viewport": [
+        390,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/language-switch.png"
+    },
+    {
+      "name": "home-bangla",
+      "route": "/",
+      "viewport": [
+        390,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/home-bangla.png"
+    },
+    {
+      "name": "project-01-bangla",
+      "route": "/projects/1/",
+      "viewport": [
+        390,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/project-01-bangla.png"
+    },
+    {
+      "name": "inquiry-bangla",
+      "route": "/inquiry/?project=1",
+      "viewport": [
+        390,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/inquiry-bangla.png"
+    },
+    {
+      "name": "inquiry-invalid-phone",
+      "route": "/inquiry/?project=1&scenario=invalid-phone",
+      "viewport": [
+        768,
+        870
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/inquiry-invalid-phone.png"
+    },
+    {
+      "name": "inquiry-sending",
+      "route": "/inquiry/?project=1&scenario=sending",
+      "viewport": [
+        768,
+        870
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/inquiry-sending.png"
+    },
+    {
+      "name": "inquiry-failure",
+      "route": "/inquiry/?project=2&scenario=failure",
+      "viewport": [
+        768,
+        870
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/inquiry-failure.png"
+    },
+    {
+      "name": "ai-unavailable",
+      "route": "/assistant/?scenario=ai-unavailable",
+      "viewport": [
+        1024,
+        650
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/ai-unavailable.png"
+    },
+    {
+      "name": "media-failure",
+      "route": "/virtual-site-visit/?scenario=media-failure",
+      "viewport": [
+        1024,
+        650
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/media-failure.png"
+    },
+    {
+      "name": "staff-sign-in",
+      "route": "/staff/sign-in/",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-sign-in.png"
+    },
+    {
+      "name": "staff-projects",
+      "route": "/staff/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-projects.png"
+    },
+    {
+      "name": "staff-editor",
+      "route": "/staff/projects/1/edit/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-editor.png"
+    },
+    {
+      "name": "staff-inquiries",
+      "route": "/staff/inquiries/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-inquiries.png"
+    },
+    {
+      "name": "staff-inquiry",
+      "route": "/staff/inquiries/1/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-inquiry.png"
+    },
+    {
+      "name": "staff-faqs",
+      "route": "/staff/faqs/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-faqs.png"
+    },
+    {
+      "name": "staff-contacts",
+      "route": "/staff/contacts/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-contacts.png"
+    },
+    {
+      "name": "staff-add",
+      "route": "/staff/projects/add/",
+      "viewport": [
+        1024,
+        800
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-add.png"
+    },
+    {
+      "name": "staff-review",
+      "route": "/staff/projects/1/review/",
+      "viewport": [
+        1024,
+        800
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-review.png"
+    },
+    {
+      "name": "staff-restricted",
+      "route": "/staff/restricted/",
+      "viewport": [
+        1024,
+        800
+      ],
+      "status": 403,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-restricted.png"
+    },
+    {
+      "name": "staff-forgot-password",
+      "route": "/staff/forgot-password/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-forgot-password.png"
+    },
+    {
+      "name": "staff-recovery-code",
+      "route": "/staff/mfa/?recovery=1",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-recovery-code.png"
+    },
+    {
+      "name": "staff-mfa",
+      "route": "/staff/mfa/",
+      "viewport": [
+        1024,
+        1000
+      ],
+      "status": 200,
+      "overflow": false,
+      "broken_images": [],
+      "screenshot": "screenshots/staff-mfa.png"
+    }
+  ],
+  "checks": [
+    "Language switching preserves page, project and query parameters",
+    "11 public routes: no overflow at 375, 390, 768, 1024, 1440px",
+    "Mobile menu opens and Escape closes it",
+    "Project thumbnail changes main image",
+    "Gallery viewer opens, navigates by keyboard and closes with Escape",
+    "Assistant introduction, start, fixture response and close",
+    "Inquiry validates, disables duplicate submission and confirms with masked phone",
+    "Inquiry failure preserves entries and retry succeeds",
+    "Media fullscreen entry and exit",
+    "Real Django staff sign-in, password visibility, invalid MFA and local demo code",
+    "Staff bilingual tabs, draft persistence, preview, review checklist and demonstration publication",
+    "Synthetic phone reveal and inquiry status persistence",
+    "FAQ selection, add and draft saving",
+    "Contact editor live preview and review entry",
+    "Staff image upload, main-image selection and alt-text preview",
+    "FAQ review checklist and publication result",
+    "Password recovery feedback and recovery-code entry",
+    "Six staff routes have no page overflow at 390px"
+  ],
+  "console_errors": [],
+  "request_failures": []
+}
