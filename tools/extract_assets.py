@@ -6,6 +6,10 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "static/images"
 OUT.mkdir(parents=True, exist_ok=True)
 SOURCES = {
+    "home-project-01.jpg": ("01-home.png", (45, 515, 498, 699)),
+    "home-project-02.jpg": ("01-home.png", (526, 515, 980, 699)),
+    "gallery-ground.jpg": ("05-gallery.png", (57, 249, 514, 417)),
+    "visit-background.jpg": ("01-home.png", (585, 1179, 1023, 1343)),
     "hero.jpg": ("01-home.png", (355, 102, 1024, 437)),
     "project-01.jpg": ("03-project-01-details.png", (76, 289, 685, 527)),
     "project-01-wide.jpg": ("05-gallery.png", (797, 248, 1093, 418)),

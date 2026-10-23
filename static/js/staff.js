@@ -26,7 +26,15 @@
     Object.entries(saved).forEach(([name,value]) => {const el = form.elements.namedItem(name); if (!el || el.type === 'file') return; if (el.type === 'checkbox') el.checked = Boolean(value); else el.value = value;});
     if (Object.keys(saved).length && $('.draft-status',form)) $('.draft-status',form).textContent = 'Draft saved';
     form.addEventListener('input', () => {if ($('.draft-status',form)) $('.draft-status',form).textContent = 'Unsaved'; if ($('.preview-contact-name')) $('.preview-contact-name').textContent = $('[name=contact_name_en]',form)?.value || 'Company contact pending.';});
-    const save = () => { const saved = write(key,serialize(form)); if (saved) {if ($('.draft-status',form)) $('.draft-status',form).textContent = 'Draft saved'; toast('Draft saved in this browser session.');} return saved; };
+    const save = () => { const saved = write(key,serialize(form)); if (saved) {
+      if (key === 'faqs') {
+        const list = $('.faq-list'), question = $('#question').value, answer = $('#answer').value;
+        let row = $('.faq-row.selected',list);
+        if (!row && question.trim()) {row=document.createElement('button'); row.type='button'; row.className='faq-row selected'; list.append(row); row.addEventListener('click',()=>selectFAQ(row));}
+        if (row && question.trim()) {row.dataset.question=question; row.dataset.answer=answer; row.replaceChildren(document.createTextNode(question)); const span=document.createElement('span'); span.textContent='›'; row.append(span);}
+        write('faq-list',$$('.faq-row',list).map(b=>({question:b.dataset.question,answer:b.dataset.answer})));
+      }
+      if ($('.draft-status',form)) $('.draft-status',form).textContent = 'Draft saved'; toast('Draft saved in this browser session.');} return saved; };
     $('[data-save-draft]',form)?.addEventListener('click',save);
     $('[data-preview]',form)?.addEventListener('click', () => preview(form));
     $$('.media-option',form).forEach(b => bindMedia(b,form));
@@ -52,7 +60,11 @@
   $('form.publication-review')?.addEventListener('submit', e => {e.preventDefault(); const form = e.currentTarget; form.replaceChildren(); const result = document.createElement('div'); result.className = 'notice success'; result.setAttribute('role','status'); result.innerHTML = '<h2>Revision published</h2><p>Publication completed in local demonstration state. No public website content was changed.</p>'; const a = document.createElement('a'); a.className = 'button'; a.href = '/staff/'; a.textContent = 'Back to projects →'; form.append(result,a);});
   const selectFAQ = b => {$$('.faq-row').forEach(r => r.classList.toggle('selected',r === b)); $('#question').value = b.dataset.question; $('#answer').value = b.dataset.answer; $('.faq-editor .draft-status').textContent = 'Draft changes';};
   $$('.faq-row').forEach(b => b.addEventListener('click', () => selectFAQ(b)));
-  $('[data-add-faq]')?.addEventListener('click', () => {$('#question').value = ''; $('#answer').value = ''; $('#question-bn').value = ''; $('#answer-bn').value = ''; $('#question').focus(); $('.faq-editor h2').textContent = 'Add FAQ';});
+  const savedFAQList = read('faq-list');
+  if (Array.isArray(savedFAQList) && $('.faq-list')) {
+    $$('.faq-row').forEach(b=>b.remove()); savedFAQList.forEach((faq,i)=>{const row=document.createElement('button'); row.type='button'; row.className='faq-row'+(i===0?' selected':''); row.dataset.question=faq.question; row.dataset.answer=faq.answer; row.textContent=faq.question; const span=document.createElement('span');span.textContent='›';row.append(span);$('.faq-list').append(row);row.addEventListener('click',()=>selectFAQ(row));});
+  }
+  $('[data-add-faq]')?.addEventListener('click', () => {$$('.faq-row').forEach(b=>b.classList.remove('selected'));$('#question').value = ''; $('#answer').value = ''; $('#question-bn').value = ''; $('#answer-bn').value = ''; $('#question').focus(); $('.faq-editor h2').textContent = 'Add FAQ';});
   $('.reveal-phone')?.addEventListener('click', e => {const masked = $('.masked-phone'); const revealed = masked.textContent === '01700000123'; masked.textContent = revealed ? '01XXX XXX123' : '01700000123'; e.currentTarget.textContent = revealed ? 'Reveal phone' : 'Hide phone';});
   const detail = $('.inquiry-detail'); if (detail) {const key = `inquiry-${detail.dataset.inquiryId}`; const saved = read(key); if (saved.status) $('#status').value = saved.status; detail.addEventListener('submit', e => {e.preventDefault(); if (write(key,{status:$('#status').value})) toast('Inquiry status saved.');});}
   $$('[data-inquiry-status]').forEach(b => {const saved = read(`inquiry-${b.dataset.inquiryStatus}`); if (saved.status) b.textContent = saved.status;});

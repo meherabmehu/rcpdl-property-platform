@@ -70,7 +70,17 @@
     e.preventDefault(); const input = $('[name=message]', form), button = $('button', form), log = $('.chat-log', form.parentElement); const message = input.value.trim(); if (!message || button.disabled) return;
     const add = (text, user = false) => { const b = document.createElement('div'); b.className = `chat-bubble${user ? ' user' : ''}`; b.textContent = text; log.append(b); log.scrollTop = log.scrollHeight; };
     add(message, true); button.disabled = true;
-    try { const {res,result} = await postForm(form, {project, scenario}); if (!res.ok) throw Error(); add(result.answer); input.value = ''; }
+    try { const {res,result} = await postForm(form, {project, scenario}); if (!res.ok) throw Error();
+      if (result.project && !/[\u0980-\u09ff]/.test(message)) {
+        const p = result.project, bubble = document.createElement('div'); bubble.className = 'chat-bubble project-answer';
+        const title = document.createElement('p'); title.textContent = `${p.name} details:`;
+        const area = document.createElement('p'); area.textContent = `${p.katha} katha · ${p.sqft} sq ft`;
+        const price = document.createElement('p'); price.className = 'price'; price.textContent = `৳${p.price}`;
+        const total = document.createElement('small'); total.textContent = 'Total price';
+        const badge = document.createElement('span'); badge.className = 'badge'; badge.textContent = 'Available';
+        bubble.append(title,area,price,total,badge); log.append(bubble); log.scrollTop = log.scrollHeight;
+      } else add(result.answer);
+      input.value = ''; }
     catch { add('AI assistant is unavailable right now. Please try again later.'); const a = document.createElement('a'); a.href = `/inquiry/?project=${project}`; a.textContent = 'Send an inquiry →'; log.append(a); }
     finally {button.disabled = false; input.focus();}
   }));
