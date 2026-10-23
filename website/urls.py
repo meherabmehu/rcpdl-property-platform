@@ -1,0 +1,31 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.page, name="home"),
+    path("projects/", views.page, {"screen": "projects"}, name="projects"),
+    path("projects/<int:project_id>/", views.page, {"screen": "detail"}, name="project"),
+    path("gallery/", views.page, {"screen": "gallery"}, name="gallery"),
+    path("virtual-site-visit/", views.page, {"screen": "visit"}, name="visit"),
+    path("assistant/", views.page, {"screen": "assistant"}, name="assistant"),
+    path("inquiry/", views.page, {"screen": "inquiry"}, name="inquiry"),
+    path("about/", views.page, {"screen": "about"}, name="about"),
+    path("contact/", views.page, {"screen": "contact"}, name="contact"),
+    path("privacy/", views.page, {"screen": "privacy"}, name="privacy"),
+    path("terms/", views.page, {"screen": "terms"}, name="terms"),
+    path("api/demo/inquiry/", views.inquiry, name="submit-inquiry"),
+    path("api/demo/assistant/", views.assistant, name="demo-assistant"),
+    path("staff/sign-in/", views.sign_in, name="staff-sign-in"),
+    path("staff/mfa/", views.mfa, name="staff-mfa"),
+    path("staff/forgot-password/", views.forgot_password, name="staff-forgot"),
+    path("staff/sign-out/", views.sign_out, name="staff-sign-out"),
+    path("staff/", views.staff, name="staff-projects"),
+    path("staff/projects/add/", views.staff, {"screen": "editor", "project_id": 0}, name="staff-add"),
+    path("staff/projects/<int:project_id>/edit/", views.staff, {"screen": "editor"}, name="staff-edit"),
+    path("staff/projects/<int:project_id>/review/", views.staff, {"screen": "review"}, name="staff-review"),
+    path("staff/inquiries/", views.staff, {"screen": "inquiries"}, name="staff-inquiries"),
+    path("staff/inquiries/<int:inquiry_id>/", views.staff, {"screen": "inquiry"}, name="staff-inquiry"),
+    path("staff/faqs/", views.staff, {"screen": "faqs"}, name="staff-faqs"),
+    path("staff/contacts/", views.staff, {"screen": "contacts"}, name="staff-contacts"),
+    path("staff/restricted/", views.staff, {"screen": "restricted"}, name="staff-restricted"),
+]

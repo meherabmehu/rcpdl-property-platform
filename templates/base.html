@@ -1,0 +1,11 @@
+{% load static %}<!DOCTYPE html>
+<html lang="{{ language|default:'en' }}">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="RC Property Development Ltd. — Explore our projects and take a closer look at the land."><title>{% block title %}RC Property Development Ltd.{% endblock %}</title><link rel="icon" href="{% static 'images/logo.png' %}"><link rel="stylesheet" href="{% static 'css/site.css' %}"><script src="{% static 'js/site.js' %}" defer></script>{% block head %}{% endblock %}</head>
+<body class="page-{{ screen }} {% if bn %}bangla{% endif %}" data-scenario="{{ demo_scenario }}" data-project="{{ project.id|default:1 }}">
+<a class="skip" href="#main">{% if bn %}মূল বিষয়বস্তুতে যান{% else %}Skip to content{% endif %}</a>
+{% include 'includes/header.html' %}
+<main id="main">{% block content %}{% endblock %}</main>
+{% include 'includes/footer.html' %}
+{% include 'components/dialogs.html' %}
+<div class="toast" role="status" hidden></div>
+</body></html>
