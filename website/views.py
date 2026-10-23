@@ -42,9 +42,11 @@ def assistant(request):
     p = project_for(2 if "02" in text else request.POST.get("project", 1))
     if any("\u0980" <= c <= "\u09ff" for c in text):
         answer = f'{p["bn_name"]}: {p["katha"]} কাঠা · {p["sqft"]} বর্গফুট। মোট মূল্য ৳{p["price"]}। উপলব্ধ। প্রকল্পের তথ্য জানতে সাহায্য করতে পারি।'
+        if not any(word in text for word in ("01", "02", "আয়তন", "মূল্য", "কাঠা", "দাম")):
+            answer = "প্রকল্পের তথ্য জানতে সাহায্য করতে পারি।"
     else:
         answer = f'{p["name"]} details: {p["katha"]} katha · {p["sqft"]} sq ft. Total price ৳{p["price"]}. Available. Dhaka · Sample location. Approved location and ownership details are pending confirmation.'
-    return JsonResponse({"ok": True, "answer": answer})
+    return JsonResponse({"ok": True, "answer": answer, "project": {"name": p["name"], "katha": p["katha"], "sqft": p["sqft"], "price": p["price"]}})
 
 def staff_access(view):
     @wraps(view)

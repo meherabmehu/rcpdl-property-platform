@@ -1,12 +1,32 @@
-{% load static %}<header class="site-header"><div class="header-inner">
-<a class="brand" href="{% url 'home' %}" aria-label="RC Property Development Ltd. Home"><img src="{% static 'images/logo.png' %}" alt="RC Property Development Ltd."></a>
-<nav id="navigation" aria-label="Main navigation">
-<a href="{% url 'home' %}" {% if screen == 'home' %}aria-current="page"{% endif %}>{% if bn %}হোম{% else %}Home{% endif %}</a>
-<a href="{% url 'projects' %}" {% if screen == 'projects' or screen == 'detail' or screen == 'visit' %}aria-current="page"{% endif %}>{% if bn %}প্রকল্প{% else %}Projects{% endif %}</a>
-<a href="{% url 'gallery' %}" {% if screen == 'gallery' %}aria-current="page"{% endif %}>{% if bn %}গ্যালারি{% else %}Gallery{% endif %}</a>
-<a href="{% url 'about' %}" {% if screen == 'about' %}aria-current="page"{% endif %}>{% if bn %}আমাদের সম্পর্কে{% else %}About{% endif %}</a>
-<a href="{% url 'contact' %}" {% if screen == 'contact' %}aria-current="page"{% endif %}>{% if bn %}যোগাযোগ{% else %}Contact{% endif %}</a>
-</nav>
-<form class="language" action="{% url 'set_language' %}" method="post">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><button name="language" value="bn" lang="bn" {% if bn %}aria-current="true"{% endif %}>বাংলা</button><span>/</span><button name="language" value="en" {% if not bn %}aria-current="true"{% endif %}>EN</button></form>
-<button class="menu-toggle" aria-expanded="false" aria-controls="navigation"><span aria-hidden="true">☰</span> Menu</button>
-</div></header>
+{% load static %}
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand"
+           href="{% url 'home' %}"
+           aria-label="RC Property Development Ltd. Home">
+            <img src="{% static 'images/logo.png' %}"
+                 alt="RC Property Development Ltd.">
+        </a>
+        <nav id="navigation" aria-label="Main navigation">
+            <a href="{% url 'home' %}"
+               {% if screen == 'home' %}aria-current="page"{% endif %}>{% if bn %}হোম{% else %}Home{% endif %}</a>
+            <a href="{% url 'projects' %}"
+               {% if screen == 'projects' or screen == 'detail' or screen == 'visit' %}aria-current="page"{% endif %}>{% if bn %}প্রকল্প{% else %}Projects{% endif %}</a>
+            <a href="{% url 'gallery' %}"
+               {% if screen == 'gallery' %}aria-current="page"{% endif %}>{% if bn %}গ্যালারি{% else %}Gallery{% endif %}</a>
+            <a href="{% url 'about' %}"
+               {% if screen == 'about' %}aria-current="page"{% endif %}>{% if bn %}আমাদের সম্পর্কে{% else %}About{% endif %}</a>
+            <a href="{% url 'contact' %}"
+               {% if screen == 'contact' %}aria-current="page"{% endif %}>{% if bn %}যোগাযোগ{% else %}Contact{% endif %}</a>
+        </nav>
+        <form class="language" action="{% url 'set_language' %}" method="post">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><button name="language"
+        value="bn"
+        lang="bn"
+        {% if bn %}aria-current="true"{% endif %}>বাংলা</button><span>/</span><button name="language"
+        value="en"
+        {% if not bn %}aria-current="true"{% endif %}>EN</button></form>
+        <button class="menu-toggle"
+                aria-expanded="false"
+                aria-controls="navigation"><span aria-hidden="true">☰</span> Menu</button>
+    </div>
+</header>
