@@ -1,5 +1,7 @@
 # RC Property Development Ltd.
 
+Current completion handoff: [screen checklist, local staff access, media audit, panorama checks and remaining differences](docs/completion-review.md). Local review index: http://127.0.0.1:8000/dev/.
+
 ## Deploy on Vercel
 
 Live frontend: [rcpdl-property-platform.vercel.app](https://rcpdl-property-platform.vercel.app/).
@@ -51,10 +53,10 @@ Open `http://127.0.0.1:8000/`. SQLite is local and ignored by Git. No Node serve
 ## Staff access
 
 ```bash
-python manage.py createsuperuser
+python manage.py setup_demo_staff --username reviewer --generate
 ```
 
-Choose your own local username/password, then visit `/staff/sign-in/`. There are no committed credentials or seeded production accounts. Login validates the actual Django user and requires `is_staff`. The email label follows the reference; enter your Django **username** for local authentication.
+The generated password is saved locally in the ignored `.env.demo` file. Open `/dev/` for all review links, then `/staff/sign-in/`. An existing user or credentials file is never overwritten. There are no committed credentials or seeded production accounts. Login validates the actual Django user and requires `is_staff`. The email label follows the reference; enter your Django **username** for local authentication.
 
 In development (`DJANGO_DEBUG=1`, the default), the MFA demonstration accepts `123456`; recovery mode accepts `DEMO-RECOVERY`. These are deliberately documented local UI fixtures, **not a production second factor**. Forgot-password shows feedback and sends no email. With `DJANGO_DEBUG=0`, the fixed MFA codes are disabled. Production authentication, MFA and recovery must be integrated before deployment.
 
@@ -67,7 +69,7 @@ In development (`DJANGO_DEBUG=1`, the default), the MFA demonstration accepts `1
 | `/projects/1/`, `/projects/2/` | Distinct detail layouts |
 | `/gallery/` | Gallery and keyboard-accessible lightbox |
 | `/virtual-site-visit/?project=1&mode=video` | Video interface and fallback |
-| `/virtual-site-visit/?project=2&mode=panorama` | 360° interface and fallback |
+| `/virtual-site-visit/?project=2&mode=panorama` | Interactive spherical panorama, drag/zoom/fullscreen/retry |
 | `/assistant/` | Local demonstration conversation |
 | `/inquiry/?project=1` | Separate inquiry form and confirmation |
 | `/about/`, `/contact/` | Company pages; contact content remains pending |
@@ -91,7 +93,7 @@ EN/বাংলা buttons POST through Django's `set_language` view. The curren
 
 ## Demonstration states
 
-These URL fixtures are deterministic and only active with Django DEBUG enabled:
+These URL fixtures are deterministic and only active locally with DEBUG enabled and never on Vercel:
 
 | URL | State |
 | --- | --- |
@@ -111,9 +113,9 @@ Staff drafts, FAQ list changes and inquiry statuses use browser `sessionStorage`
 
 ## Assets and reproduction limits
 
-The Drive folder contains only the fourteen composited PNG boards. It contains no standalone logo, original photographs, font identifiers, videos or equirectangular panoramas. Extracted image regions and logo crops are local; no stock or generated replacement photography is used. Source and extraction coordinates are committed. Run `python tools/extract_assets.py` with development dependencies to reproduce extraction.
+The Drive folder contains only fourteen composited PNG boards. Extracted originals remain preserved. The completion brief authorized new faithful illustrative media: responsive primary photographs and distinct full equirectangular panoramas are now included. Native output sizes and full prompts are in [generated asset provenance](docs/generated-assets.json); all original and generated intrinsic dimensions are in `website/image_manifest.json`. These are new illustrations, not recovered actual property detail.
 
-Roboto and Noto Sans Bengali are licensed substitutions; their OFL licenses are included. The reference font cannot be positively identified from raster boards. Icons use lightweight local SVG/CSS and some Unicode symbols; these remain an area of visual difference. Hero and other photos have different crops where embedded UI obscures original pixels. Video/360° controls expose the intended interface and an honest fallback; photographs are not represented as real working tours. Approved company contacts, legal policies, location, ownership and project copy remain pending.
+The Pannellum 2.5.6 spherical viewer has working mouse/touch drag, zoom, reset, fullscreen, loading and real failure/retry controls. Video/transcript remain unavailable. Font substitutions, small original crop limitations and remaining visual differences are documented in the [completion review](docs/completion-review.md).
 
 See [reference inventory](docs/reference-inventory.md), [visual review](docs/visual-review.md) and [verification report](docs/verification/browser-report.json). The implementation is **not certified as an exact visual match**.
 
@@ -131,6 +133,7 @@ In a second activated terminal:
 
 ```bash
 python tools/verify_browser.py
+python tools/verify_completion.py
 python tools/review_contact_sheets.py
 ```
 

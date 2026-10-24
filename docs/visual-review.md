@@ -1,3 +1,7 @@
+# Current completion audit
+
+See [24 October correction and verification handoff](completion-review.md) for the current image replacements, working spherical viewer, staff snapshots and full nine-width matrix. The historical observations below describe the initial reproduction; missing panorama and no-generated-photo observations have since been addressed. Remaining font, small source-crop and spacing limitations still apply.
+
 # Visual review and verification
 
 Reviewed on 2026-10-23. The fourteen supplied PNG boards are the source of truth. All were opened visually before implementation. See [screen/state inventory](reference-inventory.md) and `tools/verify_browser.py` for individual frame bounds and viewport choices.

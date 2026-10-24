@@ -1,0 +1,894 @@
+{
+  "checks": [
+    "Mouse and touch drag, zoom, reset, fullscreen, yaw wrap, no autorotation, actual failed asset and retry",
+    "Protected deep link returns after MFA; draft and published snapshot remain separate; public fixture unchanged",
+    "FAQ English/Bangla fields persist per row without mixing languages between records",
+    "171 route/width checks; landscape and short screens; staff editor at 200% browser CSS zoom"
+  ],
+  "matrix": [
+    {
+      "width": 320,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/projects/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/projects/1/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/projects/2/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/gallery/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/virtual-site-visit/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/assistant/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/inquiry/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/about/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/contact/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/privacy/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/terms/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/staff/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/staff/projects/1/edit/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/staff/projects/1/review/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/staff/inquiries/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/staff/inquiries/1/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/staff/faqs/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/staff/contacts/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/projects/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/projects/1/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/projects/2/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/gallery/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/virtual-site-visit/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/assistant/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/inquiry/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/about/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/contact/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/privacy/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/terms/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/staff/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/staff/projects/1/edit/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/staff/projects/1/review/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/staff/inquiries/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/staff/inquiries/1/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/staff/faqs/",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "route": "/staff/contacts/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/projects/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/projects/1/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/projects/2/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/gallery/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/virtual-site-visit/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/assistant/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/inquiry/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/about/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/contact/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/privacy/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/terms/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/staff/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/staff/projects/1/edit/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/staff/projects/1/review/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/staff/inquiries/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/staff/inquiries/1/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/staff/faqs/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/staff/contacts/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/projects/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/projects/1/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/projects/2/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/gallery/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/virtual-site-visit/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/assistant/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/inquiry/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/about/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/contact/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/privacy/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/terms/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/staff/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/staff/projects/1/edit/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/staff/projects/1/review/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/staff/inquiries/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/staff/inquiries/1/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/staff/faqs/",
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "route": "/staff/contacts/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/projects/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/projects/1/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/projects/2/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/gallery/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/virtual-site-visit/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/assistant/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/inquiry/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/about/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/contact/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/privacy/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/terms/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/staff/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/staff/projects/1/edit/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/staff/projects/1/review/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/staff/inquiries/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/staff/inquiries/1/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/staff/faqs/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/staff/contacts/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/projects/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/projects/1/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/projects/2/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/gallery/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/virtual-site-visit/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/assistant/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/inquiry/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/about/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/contact/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/privacy/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/terms/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/staff/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/staff/projects/1/edit/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/staff/projects/1/review/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/staff/inquiries/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/staff/inquiries/1/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/staff/faqs/",
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "route": "/staff/contacts/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/projects/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/projects/1/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/projects/2/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/gallery/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/virtual-site-visit/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/assistant/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/inquiry/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/about/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/contact/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/privacy/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/terms/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/staff/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/staff/projects/1/edit/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/staff/projects/1/review/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/staff/inquiries/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/staff/inquiries/1/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/staff/faqs/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/staff/contacts/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/projects/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/projects/1/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/projects/2/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/gallery/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/virtual-site-visit/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/assistant/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/inquiry/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/about/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/contact/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/privacy/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/terms/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/staff/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/staff/projects/1/edit/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/staff/projects/1/review/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/staff/inquiries/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/staff/inquiries/1/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/staff/faqs/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/staff/contacts/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/projects/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/projects/1/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/projects/2/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/gallery/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/virtual-site-visit/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/assistant/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/inquiry/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/about/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/contact/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/privacy/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/terms/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/staff/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/staff/projects/1/edit/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/staff/projects/1/review/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/staff/inquiries/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/staff/inquiries/1/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/staff/faqs/",
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "route": "/staff/contacts/",
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "panoramas": [
+    {
+      "project": 1,
+      "drag_yaw_before": 0,
+      "drag_yaw_after": 21.91885394675819,
+      "zoom_reset_fullscreen_retry": true,
+      "yaw_frames": [
+        0,
+        90,
+        179,
+        -179,
+        -90
+      ]
+    },
+    {
+      "project": 2,
+      "drag_yaw_before": 0,
+      "drag_yaw_after": 18.01475325673971,
+      "zoom_reset_fullscreen_retry": true,
+      "yaw_frames": [
+        0,
+        90,
+        179,
+        -179,
+        -90
+      ]
+    }
+  ]
+}

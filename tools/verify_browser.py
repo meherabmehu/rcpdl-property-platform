@@ -76,7 +76,7 @@ def run():
     try:
         with sync_playwright() as p:
             channel = os.environ.get('BROWSER_CHANNEL','msedge')
-            browser = p.chromium.launch(headless=True, **({} if channel=='chromium' else {'channel':channel}))
+            browser = p.chromium.launch(headless=True, args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader'], **({} if channel=='chromium' else {'channel':channel}))
             context = browser.new_context()
             page = context.new_page()
             page.on('pageerror',lambda e:report['console_errors'].append(str(e)))
@@ -86,6 +86,7 @@ def run():
                 response = page.goto(BASE+route)
                 page.evaluate('document.fonts.ready')
                 page.wait_for_timeout(100)
+                page.locator('img').evaluate_all('(els)=>Promise.all(els.map(e=>{e.loading="eager";return e.decode().catch(()=>{});} ))')
                 shot = SHOTS / f'{name}.png'
                 page.screenshot(path=str(shot),full_page=True)
                 overflow = page.evaluate('document.documentElement.scrollWidth > innerWidth')

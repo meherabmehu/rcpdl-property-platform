@@ -20,7 +20,7 @@
           1536
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 48.1
+      "mean_absolute_pixel_difference_0_255": 48.73
     },
     {
       "name": "projects",
@@ -42,7 +42,7 @@
           1002
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 50.95
+      "mean_absolute_pixel_difference_0_255": 52.61
     },
     {
       "name": "project-01",
@@ -64,7 +64,7 @@
           1010
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 38.83
+      "mean_absolute_pixel_difference_0_255": 39.48
     },
     {
       "name": "project-02",
@@ -86,7 +86,7 @@
           1024
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 31.11
+      "mean_absolute_pixel_difference_0_255": 31.32
     },
     {
       "name": "gallery",
@@ -108,7 +108,7 @@
           762
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 62.9
+      "mean_absolute_pixel_difference_0_255": 63.09
     },
     {
       "name": "visit",
@@ -130,7 +130,7 @@
           924
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 52.64
+      "mean_absolute_pixel_difference_0_255": 54.52
     },
     {
       "name": "about",
@@ -152,7 +152,7 @@
           739
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 53.79
+      "mean_absolute_pixel_difference_0_255": 53.77
     },
     {
       "name": "contact",
@@ -174,7 +174,7 @@
           739
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 61.61
+      "mean_absolute_pixel_difference_0_255": 61.66
     },
     {
       "name": "privacy",
@@ -196,7 +196,7 @@
           1017
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 33.09
+      "mean_absolute_pixel_difference_0_255": 33.11
     },
     {
       "name": "terms",
@@ -218,7 +218,7 @@
           1017
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 40.8
+      "mean_absolute_pixel_difference_0_255": 40.83
     },
     {
       "name": "inquiry",
@@ -240,7 +240,7 @@
           780
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 27.27
+      "mean_absolute_pixel_difference_0_255": 27.26
     },
     {
       "name": "assistant",
@@ -284,7 +284,7 @@
           949
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 50.49
+      "mean_absolute_pixel_difference_0_255": 51.65
     },
     {
       "name": "projects-mobile",
@@ -306,7 +306,7 @@
           1002
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 34.93
+      "mean_absolute_pixel_difference_0_255": 35.2
     },
     {
       "name": "project-01-mobile",
@@ -328,7 +328,7 @@
           1010
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 75.81
+      "mean_absolute_pixel_difference_0_255": 75.56
     },
     {
       "name": "project-02-mobile",
@@ -350,7 +350,7 @@
           1024
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 61.49
+      "mean_absolute_pixel_difference_0_255": 61.57
     },
     {
       "name": "gallery-mobile",
@@ -372,7 +372,7 @@
           775
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 65.5
+      "mean_absolute_pixel_difference_0_255": 65.09
     },
     {
       "name": "visit-video-mobile",
@@ -394,7 +394,7 @@
           913
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 44.67
+      "mean_absolute_pixel_difference_0_255": 43.86
     },
     {
       "name": "visit-panorama-mobile",
@@ -416,7 +416,7 @@
           913
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 34.3
+      "mean_absolute_pixel_difference_0_255": 33.07
     },
     {
       "name": "about-mobile",
@@ -460,7 +460,7 @@
           997
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 60.68
+      "mean_absolute_pixel_difference_0_255": 60.69
     },
     {
       "name": "privacy-mobile",
@@ -482,7 +482,7 @@
           1017
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 44.72
+      "mean_absolute_pixel_difference_0_255": 44.76
     },
     {
       "name": "terms-mobile",
@@ -504,7 +504,7 @@
           1017
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 44.88
+      "mean_absolute_pixel_difference_0_255": 44.8
     },
     {
       "name": "language-switch",
