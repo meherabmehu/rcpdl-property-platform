@@ -51,6 +51,12 @@ class PublicTests(TestCase):
         self.assertContains(self.client.get('/projects/2/'),'প্রকল্প 02')
 
 class StaffTests(TestCase):
+    @override_settings(STAFF_AUTH_AVAILABLE=False)
+    def test_hosted_staff_sign_in_explains_missing_database(self):
+        response = self.client.post('/staff/sign-in/', {'username':'example','password':'example'})
+        self.assertEqual(response.status_code,503)
+        self.assertContains(response,'persistent database',status_code=503)
+
     def setUp(self):
         self.user = get_user_model().objects.create_user(username='test-staff',password='test-only-password',is_staff=True)
 

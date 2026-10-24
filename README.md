@@ -1,5 +1,21 @@
 # RC Property Development Ltd.
 
+## Deploy on Vercel
+
+The project uses Vercel's native Django preset (`vercel.json`) and Python 3.14 (`.python-version`). Vercel discovers `manage.py`, loads `config.wsgi.application`, collects static files and serves them from its CDN. No Node application server is used. See [Vercel's Django guide](https://vercel.com/docs/frameworks/full-stack/django).
+
+Set `DJANGO_SECRET_KEY` as a sensitive environment variable for Production and Preview. Vercel deployments default to `DEBUG=False`, derive allowed hosts from Vercel's deployment/production domain variables and use secure cookies with signed-cookie sessions. Additional custom domains can be supplied through the comma-separated `DJANGO_ALLOWED_HOSTS` environment variable.
+
+The hosted frontend supports public pages, language switching, inquiry confirmation and the deterministic local assistant. Real staff authentication remains available locally. Hosted staff sign-in explains that a persistent database is required; no local SQLite database or staff credentials are uploaded. Development-only error fixtures and fixed MFA codes are disabled online. A persistent database and production authentication must be integrated before hosted staff access is enabled.
+
+To deploy again from a linked checkout:
+
+```bash
+vercel deploy --prod
+```
+
+The `.vercelignore` file excludes local environments, databases, secrets, design boards and generated verification artifacts from deployment uploads. GitHub keeps the reference/verification documentation.
+
 A Django-served frontend reproduced from the fourteen supplied design boards. Public pages use template inheritance, reusable partials, local photographs extracted from those boards, local fonts, shared CSS tokens and vanilla JavaScript. The custom staff workspace is separate from the public layout.
 
 ## Run locally

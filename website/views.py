@@ -61,6 +61,11 @@ def staff_access(view):
 def sign_in(request):
     error = ""
     if request.method == "POST":
+        if not settings.STAFF_AUTH_AVAILABLE:
+            return render(request, "staff/auth.html", {
+                "mode": "sign-in", "auth_page": True,
+                "error": "Staff sign-in requires a persistent database. Use the local development staff account for this frontend demonstration.",
+            }, status=503)
         user = authenticate(request, username=request.POST.get("username"), password=request.POST.get("password"))
         if user is not None and user.is_staff:
             login(request, user)

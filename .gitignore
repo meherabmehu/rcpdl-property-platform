@@ -4,8 +4,13 @@ __pycache__/
 *.py[cod]
 db.sqlite3
 .env
+.env.*
+.vercel/
 staticfiles/
 test-results/
 docs/verification/screenshots/
 docs/verification/comparisons/
 
+
+.vercel
+.env*

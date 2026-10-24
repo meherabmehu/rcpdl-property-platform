@@ -1,0 +1,15 @@
+.git/
+.vercel/
+.venv/
+.venv-smoke/
+.env
+.env.*
+*.sqlite3
+__pycache__/
+**/__pycache__/
+staticfiles/
+test-results/
+docs/
+tests/
+tools/
+requirements-dev.txt
