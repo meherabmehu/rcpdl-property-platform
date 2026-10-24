@@ -1,0 +1,79 @@
+{
+  "url": "https://rcpdl-property-platform.vercel.app",
+  "checked_at_utc": "2026-10-24T04:43:39.634196+00:00",
+  "routes": [
+    {
+      "route": "/",
+      "status": 200,
+      "broken_images": []
+    },
+    {
+      "route": "/projects/",
+      "status": 200,
+      "broken_images": []
+    },
+    {
+      "route": "/projects/1/",
+      "status": 200,
+      "broken_images": []
+    },
+    {
+      "route": "/projects/2/",
+      "status": 200,
+      "broken_images": []
+    },
+    {
+      "route": "/gallery/",
+      "status": 200,
+      "broken_images": []
+    },
+    {
+      "route": "/virtual-site-visit/",
+      "status": 200,
+      "broken_images": []
+    },
+    {
+      "route": "/assistant/",
+      "status": 200,
+      "broken_images": []
+    },
+    {
+      "route": "/inquiry/",
+      "status": 200,
+      "broken_images": []
+    },
+    {
+      "route": "/about/",
+      "status": 200,
+      "broken_images": []
+    },
+    {
+      "route": "/contact/",
+      "status": 200,
+      "broken_images": []
+    },
+    {
+      "route": "/privacy/",
+      "status": 200,
+      "broken_images": []
+    },
+    {
+      "route": "/terms/",
+      "status": 200,
+      "broken_images": []
+    },
+    {
+      "route": "/staff/sign-in/",
+      "status": 200,
+      "broken_images": []
+    }
+  ],
+  "checks": [
+    "CSS, JavaScript, logo and English/Bangla fonts served from the production CDN",
+    "Mobile menu and Django CSRF-protected English/Bangla switching",
+    "CSRF-protected inquiry demonstration confirms the selected project and masks synthetic phone input",
+    "Deterministic assistant works online without an external AI service",
+    "Hosted staff sign-in shows its explicit database requirement rather than attempting local SQLite authentication"
+  ],
+  "javascript_errors": []
+}

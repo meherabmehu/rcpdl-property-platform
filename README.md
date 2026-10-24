@@ -2,7 +2,9 @@
 
 ## Deploy on Vercel
 
-The project uses Vercel's native Django preset (`vercel.json`) and Python 3.14 (`.python-version`). Vercel discovers `manage.py`, loads `config.wsgi.application`, collects static files and serves them from its CDN. No Node application server is used. See [Vercel's Django guide](https://vercel.com/docs/frameworks/full-stack/django).
+Live frontend: [rcpdl-property-platform.vercel.app](https://rcpdl-property-platform.vercel.app/).
+
+The project uses Vercel's native Django preset (`vercel.json`) and Python 3.14 (`.python-version`). Vercel discovers `manage.py`, loads `config.wsgi.application`, collects static files and serves them from its CDN. The function explicitly includes `templates/**` so the top-level Django template directory is available at runtime. No Node application server is used. See [Vercel's Django guide](https://vercel.com/docs/frameworks/full-stack/django).
 
 Set `DJANGO_SECRET_KEY` as a sensitive environment variable for Production and Preview. Vercel deployments default to `DEBUG=False`, derive allowed hosts from Vercel's deployment/production domain variables and use secure cookies with signed-cookie sessions. Additional custom domains can be supplied through the comma-separated `DJANGO_ALLOWED_HOSTS` environment variable.
 
@@ -15,6 +17,8 @@ vercel deploy --prod
 ```
 
 The `.vercelignore` file excludes local environments, databases, secrets, design boards and generated verification artifacts from deployment uploads. GitHub keeps the reference/verification documentation.
+
+Run `python tools/verify_deployment.py` with development dependencies installed to check anonymous production routes, assets, language switching and demonstration forms. The saved results are in `docs/verification/deployment-report.json`.
 
 A Django-served frontend reproduced from the fourteen supplied design boards. Public pages use template inheritance, reusable partials, local photographs extracted from those boards, local fonts, shared CSS tokens and vanilla JavaScript. The custom staff workspace is separate from the public layout.
 
