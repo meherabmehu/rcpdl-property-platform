@@ -3,6 +3,18 @@ from django.contrib.auth import get_user_model
 from website.data import PROJECTS
 
 class PublicTests(TestCase):
+    def test_review_index_is_local_only(self):
+        with override_settings(DEBUG=True, ON_VERCEL=False):
+            self.assertContains(self.client.get('/dev/'), 'setup_demo_staff')
+        for values in ({'DEBUG': False}, {'DEBUG': True, 'ON_VERCEL': True}):
+            with override_settings(**values):
+                self.assertEqual(self.client.get('/dev/').status_code, 404)
+
+    @override_settings(DEBUG=True, ON_VERCEL=True)
+    def test_hosted_debug_does_not_enable_failure_fixtures(self):
+        self.assertEqual(self.client.post('/api/demo/assistant/', {'scenario': 'ai-unavailable'}).status_code, 200)
+        self.assertNotContains(self.client.get('/virtual-site-visit/?scenario=media-failure'), 'media-error-page')
+
     def test_public_pages_render_and_project_facts_match(self):
         for route in ('/', '/projects/', '/projects/1/', '/projects/2/', '/gallery/', '/virtual-site-visit/', '/assistant/', '/inquiry/', '/about/', '/contact/', '/privacy/', '/terms/'):
             with self.subTest(route=route):
@@ -51,6 +63,21 @@ class PublicTests(TestCase):
         self.assertContains(self.client.get('/projects/2/'),'প্রকল্প 02')
 
 class StaffTests(TestCase):
+    @override_settings(DEBUG=True, ON_VERCEL=False)
+    def test_deep_link_returns_after_checkpoint_and_preview_is_protected(self):
+        route = '/staff/projects/2/preview/?version=published'
+        self.assertEqual(self.client.get(route).status_code, 302)
+        self.client.post('/staff/sign-in/?next=' + route, {'username': 'test-staff', 'password': 'test-only-password'})
+        self.assertRedirects(self.client.post('/staff/mfa/', {'code': '123456'}), route)
+        self.assertContains(self.client.get(route), 'Published preview')
+        self.assertEqual(self.client.get('/staff/inquiries/99/').status_code, 404)
+
+    @override_settings(DEBUG=True, ON_VERCEL=True)
+    def test_local_checkpoint_never_accepts_demo_codes_on_vercel(self):
+        self.client.force_login(self.user)
+        self.assertContains(self.client.post('/staff/mfa/', {'code': '123456'}), 'Invalid code')
+        self.assertFalse(self.client.session.get('demo_mfa'))
+
     @override_settings(STAFF_AUTH_AVAILABLE=False)
     def test_hosted_staff_sign_in_explains_missing_database(self):
         response = self.client.post('/staff/sign-in/', {'username':'example','password':'example'})
@@ -61,9 +88,9 @@ class StaffTests(TestCase):
         self.user = get_user_model().objects.create_user(username='test-staff',password='test-only-password',is_staff=True)
 
     def test_staff_pages_need_authenticated_staff_and_demo_checkpoint(self):
-        self.assertRedirects(self.client.get('/staff/'),'/staff/sign-in/')
+        self.assertRedirects(self.client.get('/staff/'),'/staff/sign-in/?next=/staff/')
         self.client.force_login(self.user)
-        self.assertEqual(self.client.get('/staff/').status_code,403)
+        self.assertRedirects(self.client.get('/staff/'),'/staff/mfa/')
         with override_settings(DEBUG=True):
             self.assertEqual(self.client.post('/staff/mfa/',{'code':'000000'}).status_code,200)
             self.assertRedirects(self.client.post('/staff/mfa/',{'code':'123456'}),'/staff/')

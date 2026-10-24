@@ -6,6 +6,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import Http404, JsonResponse
 from django.shortcuts import redirect, render
 from django.views.decorators.http import require_POST
+from django.contrib.auth.views import redirect_to_login
+from django.urls import reverse
+from django.utils.http import url_has_allowed_host_and_scheme
 from .data import PROJECTS, GALLERY, FAQS, PRIVACY, TERMS
 from .forms import InquiryForm
 
@@ -27,7 +30,7 @@ def inquiry(request):
     form = InquiryForm(request.POST)
     if not form.is_valid():
         return JsonResponse({"ok": False, "errors": form.errors.get_json_data()}, status=422)
-    if settings.DEBUG and request.POST.get("scenario") == "failure":
+    if settings.DEBUG and not settings.ON_VERCEL and request.POST.get("scenario") == "failure":
         return JsonResponse({"ok": False, "error": "Your inquiry was not sent. Your entries are kept on this screen."}, status=503)
     phone = form.cleaned_data["phone"]
     # Never persist personal inquiry content during this frontend demonstration.
@@ -36,7 +39,7 @@ def inquiry(request):
 
 @require_POST
 def assistant(request):
-    if settings.DEBUG and request.POST.get("scenario") == "ai-unavailable":
+    if settings.DEBUG and not settings.ON_VERCEL and request.POST.get("scenario") == "ai-unavailable":
         return JsonResponse({"ok": False}, status=503)
     text = request.POST.get("message", "")[:2000]
     p = project_for(2 if "02" in text else request.POST.get("project", 1))
@@ -52,9 +55,12 @@ def staff_access(view):
     @wraps(view)
     def wrapped(request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect("staff-sign-in")
-        if not request.user.is_staff or not request.session.get("demo_mfa"):
+            return redirect_to_login(request.get_full_path(), reverse("staff-sign-in"))
+        if not request.user.is_staff:
             return render(request, "staff/restricted.html", status=403)
+        if not request.session.get("demo_mfa"):
+            request.session["staff_after_mfa"] = request.get_full_path()
+            return redirect("staff-mfa")
         return view(request, *args, **kwargs)
     return wrapped
 
@@ -70,6 +76,10 @@ def sign_in(request):
         if user is not None and user.is_staff:
             login(request, user)
             request.session["demo_mfa"] = False
+            destination = request.GET.get("next", "")
+            if destination.startswith("/staff/") and url_has_allowed_host_and_scheme(destination, {request.get_host()}):
+                if destination.split("?", 1)[0] not in (reverse("staff-sign-in"), reverse("staff-sign-out"), reverse("staff-mfa")):
+                    request.session["staff_after_mfa"] = destination
             return redirect("staff-mfa")
         error = "Check your username and password."
     return render(request, "staff/auth.html", {"mode": "sign-in", "error": error, "auth_page": True})
@@ -77,14 +87,17 @@ def sign_in(request):
 def mfa(request):
     if not request.user.is_authenticated:
         return redirect("staff-sign-in")
+    if not request.user.is_staff:
+        return render(request, "staff/restricted.html", status=403)
     mode = "recovery" if request.GET.get("recovery") else "mfa"
-    error = "Invalid code" if settings.DEBUG and request.GET.get("scenario") == "invalid-code" else ""
+    development = settings.DEBUG and not settings.ON_VERCEL
+    error = "Invalid code" if development and request.GET.get("scenario") == "invalid-code" else ""
     if request.method == "POST":
         # Demonstration checkpoint only. It is NOT a production second factor.
         code = request.POST.get("code", "").replace(" ", "")
-        if settings.DEBUG and code == ("DEMO-RECOVERY" if mode == "recovery" else "123456"):
+        if development and code == ("DEMO-RECOVERY" if mode == "recovery" else "123456"):
             request.session["demo_mfa"] = True
-            return redirect("staff-projects")
+            return redirect(request.session.pop("staff_after_mfa", reverse("staff-projects")))
         error = "Invalid code"
     return render(request, "staff/auth.html", {"mode": mode, "error": error, "auth_page": True})
 
@@ -99,10 +112,30 @@ def sign_out(request):
 @staff_access
 def staff(request, screen="projects", project_id=1, inquiry_id=1):
     project = project_for(project_id)
-    if project_id == 0:
-        project = {**project, "id": 0, "name": "", "bn_name": "", "katha": "", "sqft": "", "price": "", "location": ""}
+    if project_id not in (1, 2):
+        project = {**project, "id": project_id, "name": "", "bn_name": "", "katha": "", "sqft": "", "price": "", "location": ""}
+    if screen == "inquiry" and inquiry_id not in (1, 2):
+        raise Http404
     if screen == "restricted":
         return render(request, "staff/restricted.html", status=403)
     context = {"screen": screen, "projects": PROJECTS, "project": project, "faqs": FAQS,
                "inquiry_id": inquiry_id, "media": list(zip(project["images"], project["captions"]))}
     return render(request, f"staff/{screen}.html", context)
+
+
+@staff_access
+def project_preview(request, project_id):
+    project = project_for(project_id)
+    if project_id not in (1, 2):
+        project = {**project, "id": project_id, "name": "New project"}
+    return render(request, "public/detail.html", {
+        "screen": "detail", "projects": PROJECTS, "project": project, "gallery": GALLERY,
+        "media": list(zip(project["images"], project["captions"])),
+        "staff_preview": True, "preview_version": "published" if request.GET.get("version") == "published" else "draft",
+    })
+
+
+def development_index(request):
+    if not settings.DEBUG or settings.ON_VERCEL:
+        raise Http404
+    return render(request, "development/index.html", {"staff_ready": request.user.is_authenticated and request.user.is_staff and request.session.get("demo_mfa")})

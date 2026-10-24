@@ -78,12 +78,13 @@
         });
         return data;
     };
-    const preview = form => {
-        const data = serialize(form);
+    const preview = (form, snapshot) => {
+        const data = snapshot || serialize(form);
         const box = $('.preview-content');
         box.replaceChildren();
         const title = document.createElement('h3');
-        title.textContent = data.title_en || data.question_en || data.contact_name_en || 'Contact our team';
+        const language = $('[data-tab][aria-selected=true]', form)?.dataset.tab || 'en';
+        title.textContent = data['title_' + language] || data['question_' + language] || data['contact_name_' + language] || 'Contact our team';
         box.append(title);
         if (data.main_image) {
             const img = document.createElement('img');
@@ -92,12 +93,17 @@
             box.append(img);
         }
         const body = document.createElement('p');
-        body.textContent = data.description_en || data.answer_en || [data.contact_name_en, data.role_en, data.business_phone, data.address, data.hours].filter(Boolean).join('\n') || 'Company contact pending. Contact details will be shown here after confirmation.';
+        body.textContent = data['description_' + language] || data['answer_' + language] || [data.contact_name_en, data.role_en, data.business_phone, data.address, data.hours].filter(Boolean).join('\n') || 'Company contact pending. Contact details will be shown here after confirmation.';
         box.append(body);
         if (data.katha) {
             const facts = document.createElement('p');
             facts.textContent = `${data.katha} katha · ${data.sqft} sq ft\n${data.price}\n${data.location}\n${data.availability}`;
             box.append(facts);
+        }
+        if (form.dataset.previewUrl && !snapshot) {
+            write(form.dataset.draftKey, data);
+            const link = document.createElement('a'); link.className = 'button outline';
+            link.href = form.dataset.previewUrl; link.textContent = 'Open full draft preview →'; box.append(link);
         }
         window.rcDemo.open('staff-preview');
     };
@@ -113,7 +119,7 @@
     });
     $$('.demo-editor').forEach(form => {
         const key = form.dataset.draftKey;
-        const saved = read(key);
+        const saved = key === 'faqs' ? {} : read(key);
         Object.entries(saved).forEach(([name, value]) => {
             const el = form.elements.namedItem(name);
             if (!el || el.type === 'file') return;
@@ -128,31 +134,7 @@
         const save = () => {
             const saved = write(key, serialize(form));
             if (saved) {
-                if (key === 'faqs') {
-                    const list = $('.faq-list'),
-                        question = $('#question').value,
-                        answer = $('#answer').value;
-                    let row = $('.faq-row.selected', list);
-                    if (!row && question.trim()) {
-                        row = document.createElement('button');
-                        row.type = 'button';
-                        row.className = 'faq-row selected';
-                        list.append(row);
-                        row.addEventListener('click', () => selectFAQ(row));
-                    }
-                    if (row && question.trim()) {
-                        row.dataset.question = question;
-                        row.dataset.answer = answer;
-                        row.replaceChildren(document.createTextNode(question));
-                        const span = document.createElement('span');
-                        span.textContent = '›';
-                        row.append(span);
-                    }
-                    write('faq-list', $$('.faq-row', list).map(b => ({
-                        question: b.dataset.question,
-                        answer: b.dataset.answer
-                    })));
-                }
+                if (key === 'faqs') window.rcSaveFAQ();
                 if ($('.draft-status', form)) $('.draft-status', form).textContent = 'Draft saved';
                 toast('Draft saved in this browser session.');
             }
@@ -160,6 +142,17 @@
         };
         $('[data-save-draft]', form)?.addEventListener('click', save);
         $('[data-preview]', form)?.addEventListener('click', () => preview(form));
+        if (key === 'faqs' || key === 'contacts') {
+            const published = document.createElement('button');
+            published.type = 'button'; published.className = 'text-button'; published.textContent = 'View published snapshot';
+            published.addEventListener('click', () => {
+                const saved = read(`public-${key}`);
+                const record = key === 'faqs' && Array.isArray(saved) ? saved[Number(form.dataset.selectedFaq || 0)] : saved;
+                if (!record || !Object.keys(record).length) { toast('No reviewed snapshot has been published in this session.'); return; }
+                preview(form, record);
+            });
+            $('.editor-actions', form).append(published);
+        }
         $$('.media-option', form).forEach(b => bindMedia(b, form));
         $('.media-upload', form)?.addEventListener('change', e => {
             const file = e.target.files[0];
@@ -188,9 +181,16 @@
             };
             reader.readAsDataURL(file);
         });
+        form.noValidate = true;
         form.addEventListener('submit', e => {
             e.preventDefault();
-            // Reveal hidden language panels when native validation would target them.
+            const invalid = $(':invalid', form);
+            if (invalid) {
+                const panel = invalid.closest('[data-language]');
+                if (panel) $(`[data-tab="${panel.dataset.language}"]`, form)?.click();
+                invalid.reportValidity(); return;
+            }
+            // Drafts may be partial; review requires valid fields.
             if (!save()) return;
             if (form.dataset.reviewUrl) {
                 location.href = form.dataset.reviewUrl;
@@ -225,11 +225,9 @@
                 box.replaceChildren();
                 const result = document.createElement('div');
                 result.className = 'notice success';
-                result.textContent = 'Revision published in demonstration state. No public website content was changed.';
+                result.textContent = 'Revision published in this browser’s demonstration snapshot. Later draft edits do not change this snapshot.';
                 box.append(result);
-                write(`${key}-publication`, {
-                    published: true
-                });
+                write(`public-${key}`, key === 'faqs' ? read('faq-records') : serialize(form));
             });
             box.append(review);
             window.rcDemo.open('staff-preview');
@@ -248,50 +246,70 @@
     $('form.publication-review')?.addEventListener('submit', e => {
         e.preventDefault();
         const form = e.currentTarget;
+        const key = $('[data-review-key]').dataset.reviewKey;
+        const draft = read(key);
+        if (!draft.title_en) { toast('Save a project draft before publishing.'); return; }
+        const publishKey = key === 'project-0' ? `project-${Date.now()}` : key;
+        if (!write(`public-${publishKey}`, draft)) return;
+        write(publishKey, draft);
         form.replaceChildren();
         const result = document.createElement('div');
         result.className = 'notice success';
         result.setAttribute('role', 'status');
-        result.innerHTML = '<h2>Revision published</h2><p>Publication completed in local demonstration state. No public website content was changed.</p>';
+        result.innerHTML = '<h2>Revision published</h2><p>A separate published snapshot is saved in this browser session. Further draft edits leave it unchanged.</p>';
         const a = document.createElement('a');
         a.className = 'button';
-        a.href = '/staff/';
+        a.href = form.dataset.projectsUrl;
         a.textContent = 'Back to projects →';
         form.append(result, a);
     });
-    const selectFAQ = b => {
-        $$('.faq-row').forEach(r => r.classList.toggle('selected', r === b));
-        $('#question').value = b.dataset.question;
-        $('#answer').value = b.dataset.answer;
-        $('.faq-editor .draft-status').textContent = 'Draft changes';
-    };
-    $$('.faq-row').forEach(b => b.addEventListener('click', () => selectFAQ(b)));
-    const savedFAQList = read('faq-list');
-    if (Array.isArray(savedFAQList) && $('.faq-list')) {
-        $$('.faq-row').forEach(b => b.remove());
-        savedFAQList.forEach((faq, i) => {
-            const row = document.createElement('button');
-            row.type = 'button';
-            row.className = 'faq-row' + (i === 0 ? ' selected' : '');
-            row.dataset.question = faq.question;
-            row.dataset.answer = faq.answer;
-            row.textContent = faq.question;
-            const span = document.createElement('span');
-            span.textContent = '›';
-            row.append(span);
-            $('.faq-list').append(row);
-            row.addEventListener('click', () => selectFAQ(row));
-        });
+    const faqForm = $('.faq-editor');
+    if (faqForm) {
+        const stored = read('faq-records');
+        let records = Array.isArray(stored) ? stored : $$('.faq-row').map((b, i) => ({
+            question_en: b.dataset.question, answer_en: b.dataset.answer,
+            question_bn: i === 0 ? $('#question-bn').value : 'দলের সঙ্গে কীভাবে যোগাযোগ করব?',
+            answer_bn: i === 0 ? $('#answer-bn').value : 'ওয়েবসাইটের মাধ্যমে আগ্রহ জানান। যোগাযোগের তথ্য নিশ্চিত হওয়ার অপেক্ষায়।'
+        }));
+        let selected = 0;
+        const select = i => {
+            selected = i;
+            faqForm.dataset.selectedFaq = i;
+            for (const name of ['question_en','answer_en','question_bn','answer_bn']) faqForm.elements[name].value = records[i]?.[name] || '';
+            $$('.faq-row').forEach((b,j) => b.classList.toggle('selected', i === j));
+        };
+        const render = () => {
+            $$('.faq-row').forEach(b => b.remove());
+            records.forEach((record, i) => {
+                const row = document.createElement('button'); row.type = 'button'; row.className = 'faq-row';
+                row.textContent = record.question_en; row.addEventListener('click', () => select(i)); $('.faq-list').append(row);
+            });
+            select(selected);
+        };
+        window.rcSaveFAQ = () => {
+            if (selected < 0) selected = records.length;
+            records[selected] = serialize(faqForm); write('faq-records', records); render();
+        };
+        $('[data-add-faq]').addEventListener('click', () => { select(-1); $('[data-tab=en]', faqForm).click(); $('#question').focus(); });
+        render();
     }
-    $('[data-add-faq]')?.addEventListener('click', () => {
-        $$('.faq-row').forEach(b => b.classList.remove('selected'));
-        $('#question').value = '';
-        $('#answer').value = '';
-        $('#question-bn').value = '';
-        $('#answer-bn').value = '';
-        $('#question').focus();
-        $('.faq-editor h2').textContent = 'Add FAQ';
-    });
+    // Published snapshots are separate from editor drafts and scoped to this browser session.
+    const table = $('.projects-table tbody');
+    if (table) {
+        for (let i = 0; i < sessionStorage.length; i++) {
+            const storageKey = sessionStorage.key(i);
+            const match = /^rc-demo-public-project-(\d+)$/.exec(storageKey);
+            if (!match) continue;
+            const id = match[1], record = read(`public-project-${id}`);
+            let row = table.querySelector(`[data-project-id="${id}"]`);
+            if (!row) { row = table.rows[0].cloneNode(true); row.dataset.projectId = id; table.append(row); }
+            $('h3', row).textContent = record.title_en;
+            const paragraphs = $$('p', row); paragraphs[0].textContent = record.location; paragraphs[1].textContent = `${record.katha} katha · ${record.sqft} sq ft`;
+            $('strong', row).textContent = record.price;
+            if (record.main_image) { $('img', row).removeAttribute('srcset'); $('img', row).src = record.main_image; }
+            $('a', row).href = table.dataset.editUrl.replace('/0/', `/${id}/`);
+        }
+    }
     $('.reveal-phone')?.addEventListener('click', e => {
         const masked = $('.masked-phone');
         const revealed = masked.textContent === '01700000123';

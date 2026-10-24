@@ -1,11 +1,11 @@
 {% extends "staff/base.html" %}
-{% load static %}
+{% load static media_assets %}
 {% block sidebar %}{% endblock %}
 {% block content %}
     <section class="auth-card panel">
         {% if mode == "sign-in" %}<img class="auth-logo"
-     src="{% static 'images/logo.png' %}"
-     alt="RC Property Development Ltd."><h1>Staff sign in</h1><p class="muted">For authorized team members only.</p><form method="post">{% csrf_token %}<div class="field"><label for="username">Username or email (Staff only)</label><input id="username"
+     src="{{ 'logo.png'|media_url }}"
+     alt="RC Property Development Ltd." {% image_attributes 'logo.png' %}><h1>Staff sign in</h1><p class="muted">For authorized team members only.</p><form method="post">{% csrf_token %}<div class="field"><label for="username">Username or email (Staff only)</label><input id="username"
        name="username"
        autocomplete="username"
        placeholder="Enter username or email"

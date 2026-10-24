@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path("dev/", views.development_index, name="development-index"),
     path("", views.page, name="home"),
     path("projects/", views.page, {"screen": "projects"}, name="projects"),
     path("projects/<int:project_id>/", views.page, {"screen": "detail"}, name="project"),
@@ -23,6 +24,7 @@ urlpatterns = [
     path("staff/projects/add/", views.staff, {"screen": "editor", "project_id": 0}, name="staff-add"),
     path("staff/projects/<int:project_id>/edit/", views.staff, {"screen": "editor"}, name="staff-edit"),
     path("staff/projects/<int:project_id>/review/", views.staff, {"screen": "review"}, name="staff-review"),
+    path("staff/projects/<int:project_id>/preview/", views.project_preview, name="staff-preview"),
     path("staff/inquiries/", views.staff, {"screen": "inquiries"}, name="staff-inquiries"),
     path("staff/inquiries/<int:inquiry_id>/", views.staff, {"screen": "inquiry"}, name="staff-inquiry"),
     path("staff/faqs/", views.staff, {"screen": "faqs"}, name="staff-faqs"),
