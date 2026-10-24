@@ -1,0 +1,52 @@
+[
+  {
+    "name": "panorama-01",
+    "reference": "project-01.jpg",
+    "prompt": "Use case: photorealistic-natural. Asset type: full spherical equirectangular panorama for an illustrative real-estate demonstration, NOT an actual survey. Input image is a visual REFERENCE for the front-facing direction only. Generate ONE 3840x1920 pixel 2:1 complete 360-degree horizontal by 180-degree vertical latitude-longitude equirectangular image. The center-front view must closely match the supplied reference: sunny green flat Dhaka land plot, abundant bright green grass, scattered short saplings, white rectangular concrete boundary posts with the near post at lower right and a near post at left, taller leafy tropical trees near the perimeter, modest white/cream and red mid-rise buildings far away, vivid blue sky with thin white clouds. Continue the same plausible green land behind the camera, no new luxury buildings or mountains. Correct spherical projection: continuous level horizon at exactly image mid-height, zenith blue sky, nadir near grass, proper pole distortion. Left and right edges must join seamlessly with matching grass/sky/tree context and lighting. No vertical cut, repeated scene strip, black holes, collage, borders, lettering, UI, watermark, labels, people, vehicles or road in foreground. The two halves must show genuinely different surroundings. Photographic crisp detail. This is a texture for an interactive WebGL spherical viewer, NOT a conventional ultrawide photograph.",
+    "generated_file": "docs/assets/generated/panorama-01.png",
+    "actual_size": [
+      1774,
+      887
+    ]
+  },
+  {
+    "name": "panorama-02",
+    "reference": "project-02.jpg",
+    "prompt": "Use case: photorealistic-natural. Asset type: full spherical equirectangular panorama, clearly illustrative project demonstration, NOT an actual site capture. Input image is a visual REFERENCE for the front direction. Generate ONE 3840x1920 pixel 2:1 seamless complete 360x180 degree latitude-longitude equirectangular texture. Match front reference: a flat tan sandy Dhaka land parcel with tiny tufts of grass, low grey-brown unfinished brick boundary walls with white rectangular concrete support posts, tropical green trees and palms directly beyond the wall, distant modest white/cream mid-rise homes with reddish accents, clear bright blue sky and small white clouds, midday sunny lighting. Continue the enclosing low boundary wall and sandy plot naturally behind camera; distinct side/back azimuths, no repeating panorama strips. Correct spherical projection with level horizon at image mid-height, zenith blue sky and distorted near sand at nadir. Left/right boundaries must join seamlessly with continuous walls, ground, sky and same exposure, no chopped trees. Preserve this project's sandy walled identity, never convert it into a grass field. No text, website UI, labels, watermark, people, vehicles, mountains, luxury high rises, black poles or empty wedges. Not a normal ultrawide photograph: output a full spherical projection suitable for a real interactive WebGL 360 viewer.",
+    "generated_file": "docs/assets/generated/panorama-02.png",
+    "actual_size": [
+      1774,
+      887
+    ]
+  },
+  {
+    "name": "ground-01",
+    "reference": "project-01.jpg",
+    "prompt": "Use case: precise-object-edit. Asset type: sharper illustrative website project photograph. Re-create the supplied image as a new high-resolution 3072x1200 landscape photograph with the SAME composition, camera height, viewpoint, focal points, bright midday lighting, saturated green/blue colours, sparse green land, saplings, white concrete posts (near one lower right and near one left), perimeter tropical trees, distant white and reddish Dhaka buildings, blue cloudy sky. Preserve the relative locations of the posts, skyline, trees and horizon as closely as possible. New illustrative reconstruction, not a claim to restore original photographic detail. No additional elements, no new scene, no people, text, labels, logos, watermarks or UI. Sharply resolved grass, leaves, concrete and buildings; photographic texture without painterly smoothing. Output just the clean full photograph.",
+    "generated_file": "docs/assets/generated/ground-01.png",
+    "actual_size": [
+      2006,
+      784
+    ]
+  },
+  {
+    "name": "ground-02",
+    "reference": "project-02.jpg",
+    "prompt": "Use case: precise-object-edit. Asset type: sharper illustrative website project photograph. Re-create this exact supplied composition as a new high-resolution 3072x1056 landscape photograph: tan sandy flat land foreground with little tufts of grass, grey unfinished low brick boundary wall and white concrete posts at same positions, tropical trees and palms at left and along boundary, same modest white/cream mid-rise buildings toward center, blue sky with scattered white clouds. Preserve the sandy project's distinct identity, exact reference camera height and viewpoint, wall geometry, skyline placement, horizon, lighting and colours. Do not turn it into a green field or rearrange buildings. This is a new illustrative reconstruction, not recovered genuine source detail. Crisp natural photograph. No people, text, watermark, UI, labels, additional buildings, roads, machinery or decorative elements. Output the clean photograph only.",
+    "generated_file": "docs/assets/generated/ground-02.png",
+    "actual_size": [
+      2139,
+      735
+    ]
+  },
+  {
+    "name": "hero",
+    "reference": "hero.jpg",
+    "prompt": "Use case: precise-object-edit. Asset type: high-resolution illustrative real-estate hero photograph. Re-create supplied reference photograph at 3840x1920 with matching ground-level view, bright green grassy open Dhaka land dotted with saplings, distant modest white/cream buildings, golden sun toward right above horizon, pale blue sky becoming amber near sun, soft thin clouds, leafy tree branches framing top-right. Preserve composition and relative positions exactly as closely as possible; no mountains, luxury towers, people, vehicles or new road. Remove the small Illustrative image lettering from lower right; output no text, logo, UI, captions or watermark whatsoever. Reconstruct as a crisp detailed new illustration with natural leaves and grass, not claimed as restored original photographic detail. Do not overblur or painterly smooth. The image must remain compatible with the source website's left-side HTML heading overlay.",
+    "generated_file": "docs/assets/generated/hero.png",
+    "actual_size": [
+      1774,
+      887
+    ]
+  }
+]

@@ -1,11 +1,11 @@
-{% load static %}
+{% load static media_assets %}
 <header class="site-header">
     <div class="header-inner">
         <a class="brand"
            href="{% url 'home' %}"
            aria-label="RC Property Development Ltd. Home">
-            <img src="{% static 'images/logo.png' %}"
-                 alt="RC Property Development Ltd.">
+            <img src="{{ 'logo.png'|media_url }}"
+                 alt="RC Property Development Ltd." {% image_attributes 'logo.png' %}>
         </a>
         <nav id="navigation" aria-label="Main navigation">
             <a href="{% url 'home' %}"

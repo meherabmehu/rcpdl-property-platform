@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static media_assets %}
 {% block content %}
     <section class="home-hero"><div class="container"><h1>{% if bn %}আপনার<br>আগামী দিনের<br>ঠিকানা।{% else %}Space for<br>your next<br>chapter.{% endif %}</h1><a class="button" href="{% url 'projects' %}">{% if bn %}প্রকল্প দেখুন{% else %}Explore projects{% endif %}<span>→</span></a><small class="image-label">Illustrative image</small></div></section>
     <section class="container home-projects"><h2><a href="{% url 'projects' %}">{% if bn %}আমাদের প্রকল্প{% else %}Available projects{% endif %}<span class="mobile-only">›</span></a></h2><div class="project-grid">{% for p in projects %}{% include "components/project-card.html" %}{% endfor %}</div></section>
-    <section class="container home-gallery"><div class="section-heading"><h2>{% if bn %}গ্যালারি{% else %}Gallery{% endif %}</h2><a href="{% url 'gallery' %}"><span class="desktop-only">View gallery</span> →</a></div><div class="home-mosaic"><button class="photo photo-1" data-gallery="0"><img src="{% static 'images/project-01.jpg' %}"
-     alt="Project 01 · Ground view"><span>Project 01 · Ground view</span></button><button class="photo photo-4" data-gallery="3"><img src="{% static 'images/project-02.jpg' %}"
-     alt="Project 02 · Boundary view"><span>Project 02 · Boundary view</span></button><button class="photo photo-5" data-gallery="2"><img src="{% static 'images/project-01-wide.jpg' %}"
-     alt="Project 01 · Wider view"><span>Project 01 · Wider view</span></button><button class="photo photo-2" data-gallery="1"><img src="{% static 'images/aerial-01.jpg' %}"
-     alt="Project 01 · Aerial concept"><span>Project 01 · Aerial concept</span></button></div></section>
+    <section class="container home-gallery"><div class="section-heading"><h2>{% if bn %}গ্যালারি{% else %}Gallery{% endif %}</h2><a href="{% url 'gallery' %}"><span class="desktop-only">View gallery</span> →</a></div><div class="home-mosaic"><button class="photo photo-1" data-gallery="0"><img src="{{ 'project-01.jpg'|media_url }}"
+     alt="Project 01 · Ground view" {% image_attributes 'project-01.jpg' %} loading="lazy"><span>Project 01 · Ground view</span></button><button class="photo photo-4" data-gallery="3"><img src="{{ 'project-02.jpg'|media_url }}"
+     alt="Project 02 · Boundary view" {% image_attributes 'project-02.jpg' %} loading="lazy"><span>Project 02 · Boundary view</span></button><button class="photo photo-5" data-gallery="2"><img src="{{ 'project-01-wide.jpg'|media_url }}"
+     alt="Project 01 · Wider view" {% image_attributes 'project-01-wide.jpg' %} loading="lazy"><span>Project 01 · Wider view</span></button><button class="photo photo-2" data-gallery="1"><img src="{{ 'aerial-01.jpg'|media_url }}"
+     alt="Project 01 · Aerial concept" {% image_attributes 'aerial-01.jpg' %} loading="lazy"><span>Project 01 · Aerial concept</span></button></div></section>
     {% include "components/visit-banner.html" %}
     <section class="contact-cta"><div class="container"><h2>Let’s talk about your next project.</h2><a class="button" href="{% url 'contact' %}">Contact our team <span>→</span></a></div></section>
 {% endblock %}

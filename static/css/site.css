@@ -422,7 +422,7 @@ main {
 
 .home-hero {
     position: relative;
-    background: linear-gradient(90deg, #001a26aa, transparent 75%), url('../images/hero.jpg') center/cover;
+    background: linear-gradient(90deg, #001a26aa, transparent 75%), url('../images/media/hero-1774.webp') center/cover;
     color: white
 }
 
