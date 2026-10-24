@@ -14,13 +14,35 @@
         clearTimeout(el.timer);
         el.timer = setTimeout(() => el.hidden = true, 4500);
     };
+    const launcher = document.querySelector('[data-assistant-launcher]');
+    const assistantIds = ['ai-intro', 'chat-dialog'];
+    let chatStarted = false;
     const open = id => {
+        if (id === 'ai-intro' && chatStarted) id = 'chat-dialog';
         const dialog = document.getElementById(id);
         if (!dialog) return;
         if (dialog.open) return;
-        dialog.showModal();
+        if (assistantIds.includes(id)) {
+            assistantIds.forEach(other => { if (other !== id) document.getElementById(other)?.close(); });
+            dialog.show();
+            launcher?.setAttribute('aria-expanded', 'true');
+            if (id === 'chat-dialog') dialog.querySelector('[name=message]')?.focus({preventScroll: true});
+        } else dialog.showModal();
     };
-    $$('[data-open]').forEach(b => b.addEventListener('click', () => open(b.dataset.open)));
+    $$('[data-open]').forEach(b => b.addEventListener('click', () => {
+        if (b === launcher && assistantIds.some(id => document.getElementById(id)?.open)) {
+            assistantIds.forEach(id => document.getElementById(id)?.close());
+            launcher.focus({preventScroll: true});
+        } else open(b.dataset.open);
+    }));
+    assistantIds.forEach(id => document.getElementById(id)?.addEventListener('close', () => {
+        launcher?.setAttribute('aria-expanded', String(assistantIds.some(other => document.getElementById(other)?.open)));
+    }));
+    document.addEventListener('keydown', e => {
+        if (e.key !== 'Escape' || !assistantIds.some(id => document.getElementById(id)?.open)) return;
+        assistantIds.forEach(id => document.getElementById(id)?.close());
+        launcher?.focus({preventScroll: true});
+    });
     $$('[data-close]').forEach(b => b.addEventListener('click', () => b.closest('dialog').close()));
     $$('dialog').forEach(d => d.addEventListener('click', e => {
         if (e.target === d && !d.classList.contains('lightbox')) {
@@ -33,6 +55,7 @@
         open('notice-dialog');
     }));
     $('[data-start-chat]')?.addEventListener('click', () => {
+        chatStarted = true;
         $('#ai-intro').close();
         open('chat-dialog');
     });
