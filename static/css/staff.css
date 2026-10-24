@@ -1,4 +1,14 @@
 .mfa-digits {display:flex;justify-content:center;gap:8px;margin:25px 0 12px}
+.staff-main,.staff-shell,.staff-title {min-width:0}
+.staff-main input,.staff-main textarea,.staff-main select {max-width:100%}
+.staff-sidebar svg {flex-shrink:0}
+.lock-symbol svg {width:36px;height:36px}
+@media(max-width:430px) {
+    .staff-page .staff-header {flex-wrap:wrap;height:auto;gap:8px;padding:12px}
+    .staff-page .staff-user {gap:8px;flex-wrap:wrap}
+    .staff-page .staff-title {flex-wrap:wrap;gap:12px}
+    .staff-page .editor-actions {flex-wrap:wrap}
+}
 .mfa-digits input {width:42px;height:58px;padding:8px;text-align:center;font-size:25px!important;border:1px solid #cbd8e6;border-radius:6px}
 .staff-inquiries th,.staff-inquiries td {white-space:nowrap;font-size:13px;padding:17px 10px}
 .staff-inquiries .table-wrap .button {font-size:12px;padding:8px 12px;min-height:35px;white-space:nowrap}
