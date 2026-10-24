@@ -89,7 +89,7 @@ The completion suite also checks actual panorama interaction/recovery, login ret
 - `docs/verification/screenshots/`: full-size source-screen captures; `completion/` contains yaw, fullscreen, responsive and zoom evidence.
 - `docs/verification/comparisons/`: source on left/rendered page on right, overlays, pixel diffs and eight contact sheets.
 
-Large screenshot artifacts are reproducible and ignored by Git. Their source frames come from the fourteen original Drive boards, not generated expected screenshots. Staff boards 10/11/12 and all six board-14 states are included. Reference pairs were visually inspected, including staff/editor/FAQ/inquiries, sign-in/MFA/restricted and virtual visit. Pixel scores are diagnostic, never a claim of exact visual acceptance.
+Large screenshot artifacts are reproducible and ignored by Git. Their source frames come from the fourteen original Drive boards, not generated expected screenshots. Staff boards 10/11/12 and all six board-14 states are included. Reference pairs were visually inspected, including staff/editor/FAQ/inquiries, sign-in/MFA/restricted and virtual visit. Final inspection caught intrinsic height attributes stretching the staff logo; a shared automatic-height rule fixes it while explicit photo crops remain intact. The browser suite now asserts that images using ordinary fill rendering retain their natural proportions. Pixel scores are diagnostic, never a claim of exact visual acceptance.
 
 ## Remaining visible differences
 

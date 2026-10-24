@@ -20,7 +20,7 @@
           1536
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 48.73
+      "mean_absolute_pixel_difference_0_255": 48.75
     },
     {
       "name": "projects",
@@ -42,7 +42,7 @@
           1002
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 52.61
+      "mean_absolute_pixel_difference_0_255": 52.64
     },
     {
       "name": "project-01",
@@ -64,7 +64,7 @@
           1010
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 39.48
+      "mean_absolute_pixel_difference_0_255": 39.52
     },
     {
       "name": "project-02",
@@ -86,7 +86,7 @@
           1024
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 31.32
+      "mean_absolute_pixel_difference_0_255": 31.36
     },
     {
       "name": "gallery",
@@ -152,7 +152,7 @@
           739
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 53.77
+      "mean_absolute_pixel_difference_0_255": 53.8
     },
     {
       "name": "contact",
@@ -196,7 +196,7 @@
           1017
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 33.11
+      "mean_absolute_pixel_difference_0_255": 33.09
     },
     {
       "name": "terms",
@@ -218,7 +218,7 @@
           1017
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 40.83
+      "mean_absolute_pixel_difference_0_255": 40.8
     },
     {
       "name": "inquiry",
@@ -284,7 +284,7 @@
           949
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 51.65
+      "mean_absolute_pixel_difference_0_255": 51.56
     },
     {
       "name": "projects-mobile",
@@ -306,7 +306,7 @@
           1002
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 35.2
+      "mean_absolute_pixel_difference_0_255": 35.12
     },
     {
       "name": "project-01-mobile",
@@ -350,7 +350,7 @@
           1024
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 61.57
+      "mean_absolute_pixel_difference_0_255": 61.7
     },
     {
       "name": "gallery-mobile",
@@ -482,7 +482,7 @@
           1017
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 44.76
+      "mean_absolute_pixel_difference_0_255": 44.72
     },
     {
       "name": "terms-mobile",
@@ -504,7 +504,7 @@
           1017
         ]
       },
-      "mean_absolute_pixel_difference_0_255": 44.8
+      "mean_absolute_pixel_difference_0_255": 44.89
     },
     {
       "name": "language-switch",

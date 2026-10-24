@@ -93,6 +93,12 @@ def run():
                 broken = page.locator('img').evaluate_all('(els)=>els.filter(e=>e.getAttribute("src") && !e.hidden && (!e.complete || e.naturalWidth===0)).map(e=>e.src)')
                 assert not overflow, f'Overflow: {name}'
                 assert not broken, f'Broken images: {name}: {broken}'
+                distorted = page.locator('img').evaluate_all('''els => els.filter(e => {
+                    const r = e.getBoundingClientRect();
+                    return r.width && r.height && e.naturalWidth && getComputedStyle(e).objectFit === 'fill'
+                        && Math.abs((r.width / r.height) / (e.naturalWidth / e.naturalHeight) - 1) > .04;
+                }).map(e => e.src)''')
+                assert not distorted, f'Distorted image proportions: {name}: {distorted}'
                 assert response.status < 400 or 'restricted' in name, f'{name}: HTTP {response.status}'
                 report['pages'].append({'name':name,'route':route,'viewport':[width,height],'status':response.status,'overflow':overflow,'broken_images':broken,'screenshot':f'screenshots/{name}.png'})
                 return shot
