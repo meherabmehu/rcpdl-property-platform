@@ -58,6 +58,7 @@
     $$('.thumbnail').forEach((b, i) => b.addEventListener('click', () => {
         const main = $('#main-photo') || $('.feedback-layout .main-photo img');
         if (!main) return;
+        main.removeAttribute('srcset');
         main.src = b.dataset.image;
         main.alt = b.getAttribute('aria-label');
         $$('.thumbnail').forEach(t => {
@@ -311,51 +312,6 @@
             input.focus();
         }
     }));
-    const stage = $('#media-stage');
-    if (stage) {
-        const params = new URLSearchParams(location.search);
-        const mode = params.get('mode') || 'panorama';
-        const setMode = m => {
-            const panorama = m === 'panorama';
-            $$('.panorama-controls,.panorama-hint').forEach(x => x.hidden = !panorama);
-            $$('.stage-play,.video-controls,.video-description').forEach(x => x.hidden = panorama);
-            $('.photo-alternative').hidden = !panorama;
-            $$('[data-mode]').forEach(b => {
-                b.classList.toggle('outline', b.dataset.mode !== m);
-                b.setAttribute('aria-pressed', String(b.dataset.mode === m));
-            });
-            const url = new URL(location.href);
-            url.searchParams.set('mode', m);
-            history.replaceState({}, '', url);
-        };
-        setMode(mode);
-        $$('[data-mode]').forEach(b => b.addEventListener('click', () => {
-            setMode(b.dataset.mode);
-            $('.media-fallback').hidden = false;
-        }));
-        $('#visit-project').addEventListener('change', e => {
-            const url = new URL(location.href);
-            url.searchParams.set('project', e.target.value);
-            location.href = url;
-        });
-        const fallback = () => {
-            $('.media-fallback').hidden = false;
-        };
-        $$('.stage-play,[data-media-fallback],.retry-media').forEach(b => b.addEventListener('click', fallback));
-        $('.video-controls input')?.addEventListener('input', fallback);
-        if (scenario === 'media-failure') fallback();
-        $$('.fullscreen-toggle').forEach(b => b.addEventListener('click', async () => {
-            try {
-                if (document.fullscreenElement) await document.exitFullscreen();
-                else await stage.requestFullscreen();
-            } catch {
-                toast('Fullscreen is unavailable in this browser.');
-            }
-        }));
-        document.addEventListener('fullscreenchange', () => {
-            $('.stage-top .fullscreen-toggle').textContent = document.fullscreenElement ? '⛶ Exit fullscreen' : '⛶ Fullscreen';
-        });
-    }
     // Any actual network image error receives the same recoverable fallback.
     $$('main img').forEach(img => img.addEventListener('error', () => {
         if (img.dataset.failed) return;
